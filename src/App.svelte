@@ -14,33 +14,8 @@
 		activeTab = clickedTab;
 	}
 
-	let polls = [
-		{
-			id: 1,
-			question: 'Python or JavaScript?',
-			answerA: 'Python',
-			answerB: 'JavaScript',
-			votesA: 9,
-			votesB: 15
-		}
-	]
-
 	function handleAdd(e) {
-		const poll = e.detail;
-		polls = [poll, ...polls];
 		activeTab = 'Current Polls';
-	}
-
-	function handleVote(e) {
-		const { option, id } = e.detail;
-
-		const copiedPolls = [...polls];
-		const upVotedPoll = copiedPolls.find(poll => poll.id === id);
-
-		option === 'a' && upVotedPoll.votesA++;
-		option === 'b' && upVotedPoll.votesB++;
-
-		polls = copiedPolls;
 	}
 </script>
 
@@ -48,7 +23,7 @@
 <main>
 	<Tabs {tabs} {activeTab} on:tabChange={tabChange} />
 	{#if activeTab === 'Current Polls'}
-		<PollList {polls} on:vote={handleVote} />
+		<PollList />
 	{:else}
 		<CreatePollForm on:add={handleAdd} />
 	{/if}
