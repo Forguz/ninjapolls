@@ -1,4 +1,6 @@
 <script>
+	import { tweened } from 'svelte/motion';
+
 	import Header from './components/Header.svelte';
 	import Footer from './components/Footer.svelte';
 	import PollList from './components/PollList.svelte';
